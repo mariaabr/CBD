@@ -1,6 +1,6 @@
-# Complmentos de Base de Dados
+# Complementos de Base de Dados
 
-Cadeira de dedicada ao estudo de diferentes linguagens utilizados na manipulação de dados.
+Cadeira dedicada ao estudo de diferentes linguagens utilizados na manipulação de dados.
 
 ---
 
@@ -15,9 +15,12 @@ Cadeira de dedicada ao estudo de diferentes linguagens utilizados na manipulaç�
 
     Guião1 Redis: 26 de Setembro
     Guião2 MongoDB: 30 de Outubro
-    Guião3 Cassandra: .. de Novembro
-    Guião4 Neo4j: .. de Dezembro
-    Quizz: .. de Dezembro
+    Guião3 Cassandra: 18 de Novembro ?
+    Guião4 Neo4j: 29 de Dezembro ?
+    Quizz: 30 de Dezembro
 
-### Regente:
+### Regente (professor TP):
     Carlos Costa
+
+### Professor P:
+    Tiago Godinho

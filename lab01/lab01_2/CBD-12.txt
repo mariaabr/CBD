@@ -1,0 +1,1 @@
+redis-cli < lab01/lab01_2/CBD-12-batch.txt

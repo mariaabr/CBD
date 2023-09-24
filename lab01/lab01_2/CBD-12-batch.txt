@@ -1,0 +1,44 @@
+Redis - Inserção massiva
+
+set comida bolo
+get comida
+set bebida sumo
+get bebida
+set animal gato
+append animal cao
+append animal pinguim
+get animal
+set marta in
+get marta
+append marta aci
+get marta
+append marta o
+get marta
+lpush rafaela alves abrunhosa dias
+get rafaela
+lrange rafaela
+lrange rafaela 0 -1
+lrange rafaela 2 -1
+lpop rafaela 1
+lrange rafaela 0 -1
+lrem rafaela 0 alves
+lrange rafaela 0 -1
+rpush renato alexandre lourenço dias
+lrange renato 0 -1
+lpos renato 1
+lpos renato 0
+lpos renato dias
+hset desporto futsal marta
+hset desporto volei paradinha
+hset desporto basket carolina
+hkeys desporto
+hgetall desporto
+hget desporto volei
+hexists desporto futebol
+hexists desporto futsal
+sadd maria abrunhosa dias
+smembers
+smembers maria
+mset joao santos goncalo ribau marta contente
+mget joao
+mget joao marta

@@ -1,0 +1,51 @@
+ping
+set comida bolachinhas
+set comida uvas
+set comida banana
+set comida batatinhas
+set comida salmao
+scard
+set card comida
+get card
+get comida
+ACLacl cat
+acl cat
+hmget comida
+hgetall
+hgetall comida
+
+hmget carro
+hmget carro name
+hmget carro name volkswagen
+hmget carro name
+hmeet carro name volkswagen
+hmset carro name volkswagen
+hmget carro name
+hgetall carro
+hmset carro preco 50.800 [name bmw]
+hmget carro name
+hgetall carro
+lrange bolo
+lrange bolo 0 -1
+lset bolo 1 ovos
+set code 1
+get code
+get 1
+get 2
+get c
+get
+hmset gato cor preto
+hmget gato
+hmget gato cor
+lset ola 0 m
+lpush bicho gato
+lrange
+lrange bicho 0 -1
+llen bicho
+linsert bicho after 1 gato
+lrange bicho 0 -1
+linsert bicho after 1 cao
+lrange bicho 0 -1
+lrange bicho 0 -1 gato eeeeee
+linsert bicho after gato cao
+lrange bicho 0 -1
