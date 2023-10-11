@@ -1,0 +1,35 @@
+Neste exercício foi utilizado um método mais estático de testagem, não sendo interativo a nível de introduzir
+produtos, para testar é necessário mexer na main do código.
+Existindo uma função chamada registOrder que será chamada por cada produto pertencente a uma lista de produtos guardada por utilizador que foi criada na main.
+Neste exemplo foi adicionado um utilzador1 chamado luisa e um utilizador2 chamado bernardo.
+Cada um destes utilizadores tem-lhe uma lista de produtos associada sendo que cada produto tem uma quantidade.
+
+As limitações deste sistema, comum a todo ele, são de 5 produtos por um período de tempo de 20 segundos de forma a se testar mais facilmente.
+No caso do utilizador1 este adicionou 5 produtos, sendo que cada produto tem a sua quantidade, neste caso 3, 1, 1, 1, 1.
+Para este utilizador, apenas os 3 primeiros produtos serão admitidos uma vez que a quantidade total destes é 5, o limite máximo. Assim, os 3 primeiros pedidos
+recebem uma mensagem positiva e os restantes recebem uma mensagem de erro.
+
+No caso do utilizador2 este adicionou 6 produtos de quantidades 2, 1, 1, 1, 1, 2, respetivamente.
+Neste caso, os 4 primeiros pedidos recebem uma mensagem positiva uma vez que somadas as quantidades dá o limte máximo de 5
+enquanto que os restantes, ultrapassando o limite máximo de produtos por unidade de tempo estipulados, recebem uma mensagem de erro.
+
+
+exemplo:
+Registo de pedidos
+------------------
+Utilizador1: luisa 
+Utilizador2: bernardo 
+Utilizador 1
+Pedido atendido com sucesso!
+Pedido atendido com sucesso!
+Pedido atendido com sucesso!
+Pedimos desculpa mas o seu pedido foi rejeitado, excedeu o numéro máximo de produtos por unidade de tempo.
+Pedimos desculpa mas o seu pedido foi rejeitado, excedeu o numéro máximo de produtos por unidade de tempo.
+
+Utilizador 2
+Pedido atendido com sucesso!
+Pedido atendido com sucesso!
+Pedido atendido com sucesso!
+Pedido atendido com sucesso!
+Pedimos desculpa mas o seu pedido foi rejeitado, excedeu o numéro máximo de produtos por unidade de tempo.
+Pedimos desculpa mas o seu pedido foi rejeitado, excedeu o numéro máximo de produtos por unidade de tempo.

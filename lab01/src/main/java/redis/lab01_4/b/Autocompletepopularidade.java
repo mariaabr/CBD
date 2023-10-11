@@ -69,31 +69,33 @@ public class Autocompletepopularidade {
 
             autocp.jedis.hmset("names_popularity_list", mapa); // mapa not ordered
 
-            // mapa order by popularity
-            // Map<String, String> mapaautocp = autocp.getNames();
-            Map<String, String> orderedmapa = ordermapa(autocp.getNames()); // sort map of autocp
-            
-            for(Map.Entry<String, String> entry : orderedmapa.entrySet()) {
-                System.out.println(entry);
-            }
-
             // user interaction
             System.out.print("Search for ('Enter for quit'): ");
             Scanner sc = new Scanner(System.in);
             String input = sc.next();
             sc.close();
 
-            ArrayList<String> infoautoc = new ArrayList<String>();
+            Map<String, String> infoautoc = new HashMap<>();
             
-            for(Entry<String, String> entry : orderedmapa.entrySet()){
+            for(Entry<String, String> entry : autocp.getNames().entrySet()){
                 String name = entry.getKey();
+                String popularity = entry.getValue();
                 if (name.toLowerCase().startsWith(input)){
-                    infoautoc.add(name);
+                    infoautoc.put(name, popularity);
                 }
             }
             
+            // mapa order by popularity
+            // Map<String, String> mapaautocp = autocp.getNames();
+            Map<String, String> orderedmapa = ordermapa(infoautoc); // sort map of autocp
+            
+            // for(Entry<String, String> entry : orderedmapa.entrySet()) {
+            //     if(Integer.parseInt(entry.getValue()) > 450)
+            //         System.out.println(entry);
+            // }
+
             // output
-            for(String res: infoautoc){
+            for(Entry<String, String> res: orderedmapa.entrySet()){
                 System.out.println(res);
             }
 

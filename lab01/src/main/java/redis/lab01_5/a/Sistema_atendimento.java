@@ -44,10 +44,48 @@ public class Sistema_atendimento {
         }
     }
 
+    // public static void addProduct(){
+
+    //     System.out.print("Utilizador: ");
+    //     Scanner username = new Scanner(System.in);
+    //     String user = username.nextLine();
+
+    // }
+
     public static void main(String[] args){
 
         Sistema_atendimento atendimento = new Sistema_atendimento(5, 20); // comuns a todo o sistema
-        
+
+        // menu
+        // System.out.println("");
+        // System.out.println("Menu");
+        // System.out.println("1 - AddProduct");
+        // System.out.println("2 - ListOrder");
+        // System.out.println("3 - DeleteProduct");
+        // System.out.println("4 - AddUser");
+        // System.out.println("5 - Exit");
+
+        // Scanner sc = new Scanner(System.in);
+        // String option = sc.nextLine();
+        // sc.close();
+
+        // switch(option){
+        //     case "1":
+        //         addProduct();
+        //         break;
+        //     case "2":
+        //         break;
+        //     case "3":
+        //         break;
+        //     case "4":
+        //         break;
+        //     case "5":
+        //         System.exit(0);
+        //         break;
+        //     default:
+        //         System.out.println("Opção inválida!");
+        // }
+
         ArrayList<String> products_user1 = new ArrayList<String>();
         ArrayList<String> products_user2 = new ArrayList<String>();
 
@@ -61,7 +99,6 @@ public class Sistema_atendimento {
         System.out.print("Utilizador2: ");
         Scanner username2 = new Scanner(System.in);
         String user2 = username2.nextLine();
-        username2.close();
 
         // list order - user1
         products_user1.add("batata");
