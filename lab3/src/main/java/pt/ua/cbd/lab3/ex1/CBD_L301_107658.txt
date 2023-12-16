@@ -1,0 +1,152 @@
+# CBD – Lab301 – Rafaela Abrunhosa
+
+## Iniciar Cassandra
+
+comandos para iniciar o cassandra:
+    docker compose up
+    cqlsh - no container
+    docker-compose exec -it cassandra cqlsh
+
+## O que é Cassandra?
+Cassandra é uma base de dados distribuída do Apache altamente escalável e projetada para gerir grandes quantidades de dados estruturados.
+Fornece alta disponibilidade sem nenhum ponto único de falha.
+<br>
+
+### Criar um keyspace
+CREATE KEYSPACE firstkeyspace WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3}
+
+criado o keyspace "firstkeyspace" com a propriedade replication
+
+### Descrever um keyspace
+DESCRIBE keyspaces;
+
+firstkeyspace  system_auth         system_schema  system_views         
+system         system_distributed  system_traces  system_virtual_schema
+
+retorna os keyspaces existentes
+
+### Utilizar um keyspace
+USE firstkeyspace;
+cqlsh:firstkeyspace>
+
+### Eliminar um keyspace
+DROP KEYSPACE firstkeyspace;
+
+### Criar uma tabela
+CREATE TABLE aluno(nmec int PRIMARY KEY, name text, age int);
+
+com o nmec como a chave primária
+
+### Verificar a existência de uma tabela e ver as colunas
+select * from aluno;
+
+ nmec | age | name
+------+-----+------
+
+(0 rows)
+
+### Eliminar uma tabela
+DROP TABLE aluno;
+
+### Criar/Escrever dados numa tabela
+INSERT INTO aluno(nmec, name, age) VALUES(107485,'mar', 18);
+INSERT INTO aluno(nmec, name, age) VALUES(108365,'blue', 19);
+INSERT INTO aluno(nmec, name, age) VALUES(108926,'lia', 17);
+
+### Ler dados de uma tabela
+select * from aluno;
+
+ nmec   | age | name
+--------+-----+------
+ 108365 |  19 | blue
+ 107485 |  18 |  mar
+ 108926 |  17 |  lia
+
+(3 rows)
+
+### Editar/Atualizar dados de uma tabela
+
+UPDATE aluno SET age=21 WHERE nmec=108926;
+select * from aluno ;
+
+ nmec   | age | name
+--------+-----+------
+ 108365 |  19 | blue
+ 107485 |  18 |  mar
+ 108926 |  21 |  lia
+
+(3 rows)
+email, password
+### Eliminar dados de uma tabela
+
+DELETE age FROM aluno WHERE nmec=107485;
+select * from aluno ;
+
+ nmec   | age  | name
+--------+------+------
+ 108365 |   19 | blue
+ 107485 | null |  mar
+ 108926 |   21 |  lia
+
+(3 rows)
+
+ou apagar uma linha:
+DELETE FROM aluno WHERE nmec=107485;
+
+## Coleções
+### Tabela com um hashmap
+INSERT INTO maptest (name, address) VALUES ('oui', {'home' : 'france' , 'office' : 'd4' });
+select * from maptest;
+
+ name | address
+------+------------------------------------
+  oui | {'home': 'france', 'office': 'd4'}
+
+(1 rows)
+
+### TTL - Time-to-live
+INSERT INTO aluno(nmec, name, age) values (97594,'ana', 25) USING TTL 3600;
+
+Este comando define o tempo de duração em segundos até aos valores serem expirados.
+
+SELECT TTL name
+from aluno
+WHERE nmec=97594;
+
+O output será igual ao tempo que falta até ser expirado. Ou seja, deve ser menor do que 3600.
+
+INSERT INTO aluno(nmec, name, age) values (98575,'artur', 27) USING TTL 20;
+SELECT TTL (name) from aluno WHERE nmec=98575;
+
+ ttl(name)
+-----------
+        18
+
+(1 rows)
+select * from aluno;
+
+ nmec   | age  | name
+--------+------+-------
+  97594 |   25 |   ana
+  98575 |   27 | artur
+ 108365 |   19 |  blue
+ 107485 | null |   mar
+ 108926 |   21 |   lia
+
+(5 rows)
+SELECT TTL (name) from aluno WHERE nmec=98575;
+
+ ttl(name)
+-----------
+
+(0 rows)
+select * from aluno;
+
+ nmec   | age  | name
+--------+------+------
+  97594 |   25 |  ana
+ 108365 |   19 | blue
+ 107485 | null |  mar
+ 108926 |   21 |  lia
+
+(4 rows)

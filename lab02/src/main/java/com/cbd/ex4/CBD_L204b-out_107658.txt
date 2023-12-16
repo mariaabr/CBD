@@ -1,0 +1,112 @@
+Dados de teste:
+
+// list order - user1
+Map<String, Integer> prod11 = new HashMap<>();
+prod11.put("batatas", 3);
+products_user1.put(prod11, 30);
+Map<String, Integer> prod12 = new HashMap<>();
+prod12.put("café", 1);
+products_user1.put(prod12, 30);
+Map<String, Integer> prod13 = new HashMap<>();
+prod13.put("carne picada", 1);
+products_user1.put(prod13, 30);
+Map<String, Integer> prod14 = new HashMap<>();
+prod14.put("gel de banho", 1);
+products_user1.put(prod14, 30);
+Map<String, Integer> prod15 = new HashMap<>();
+prod15.put("chocolate", 1);
+products_user1.put(prod15, 30);
+
+// list order - user2
+Map<String, Integer> prod21 = new HashMap<>();
+prod21.put("bolachas", 2);
+products_user2.put(prod21, 30);
+Map<String, Integer> prod22 = new HashMap<>();
+prod22.put("compal de maçã", 1);
+products_user2.put(prod22, 30);
+Map<String, Integer> prod23 = new HashMap<>();
+prod23.put("salmão", 1);
+products_user2.put(prod23, 30);
+Map<String, Integer> prod24 = new HashMap<>();
+prod24.put("creme de corpo", 1);
+products_user2.put(prod24, 30);
+Map<String, Integer> prod25 = new HashMap<>();
+prod25.put("arroz", 1);
+products_user2.put(prod25, 30);
+Map<String, Integer> prod26 = new HashMap<>();
+prod26.put("chávena de chá", 1);
+products_user2.put(prod26, 30);
+Map<String, Integer> prod27 = new HashMap<>();
+prod27.put("chávena de café", 2);
+products_user2.put(prod27, 30);
+Map<String, Integer> prod28 = new HashMap<>();
+prod28.put("leite", 1);
+products_user2.put(prod28, 30);
+Map<String, Integer> prod29 = new HashMap<>();
+prod29.put("pêras", 2);
+products_user2.put(prod29, 30);
+
+Output:
+
+Registo de pedidos
+------------------
+Utilizador1: filsons 
+Utilizador2: joao 
+Utilizador 1
+inicio Document{{username=filsons, products=[Document{{product=batatas, quantidade=3, lifetime=1698318176421}}], count=3, _id=653a4760620a9e71d9f466be}}
+Pedido atendido com sucesso!
+a seguir Document{{_id=653a4760620a9e71d9f466be, username=filsons, products=[Document{{product=batatas, quantidade=3, lifetime=1698318176421}}, Document{{product=carne picada, quantidade=1, lifetime=1698318181456}}], count=4}}
+
+Pedido atendido com sucesso!
+a seguir Document{{_id=653a4760620a9e71d9f466be, username=filsons, products=[Document{{product=batatas, quantidade=3, lifetime=1698318176421}}, Document{{product=carne picada, quantidade=1, lifetime=1698318181456}}, Document{{product=café, quantidade=1, lifetime=1698318186474}}], count=5}}
+
+Pedido atendido com sucesso!
+a seguir nao registDocument{{_id=653a4760620a9e71d9f466be, username=filsons, products=[Document{{product=batatas, quantidade=3, lifetime=1698318176421}}, Document{{product=carne picada, quantidade=1, lifetime=1698318181456}}, Document{{product=café, quantidade=1, lifetime=1698318186474}}], count=5}}
+
+Pedimos desculpa mas o seu pedido foi rejeitado, excedeu o número máximo de produtos por unidade de tempo.
+a seguir nao registDocument{{_id=653a4760620a9e71d9f466be, username=filsons, products=[Document{{product=batatas, quantidade=3, lifetime=1698318176421}}, Document{{product=carne picada, quantidade=1, lifetime=1698318181456}}, Document{{product=café, quantidade=1, lifetime=1698318186474}}], count=5}}
+
+Pedimos desculpa mas o seu pedido foi rejeitado, excedeu o número máximo de produtos por unidade de tempo.
+
+Utilizador 2
+try regist creme de corpo
+inicio Document{{username=joao, products=[Document{{product=creme de corpo, quantidade=1, lifetime=1698318201501}}], count=1, _id=653a4779620a9e71d9f466bf}}
+Pedido atendido com sucesso!
+o meu tempo de vida acabou batatas
+try regist arroz
+a seguir Document{{_id=653a4779620a9e71d9f466bf, username=joao, products=[Document{{product=creme de corpo, quantidade=1, lifetime=1698318201501}}, Document{{product=arroz, quantidade=1, lifetime=1698318206515}}], count=2}}
+
+Pedido atendido com sucesso!
+o meu tempo de vida acabou carne picada
+try regist leite
+a seguir Document{{_id=653a4779620a9e71d9f466bf, username=joao, products=[Document{{product=creme de corpo, quantidade=1, lifetime=1698318201501}}, Document{{product=arroz, quantidade=1, lifetime=1698318206515}}, Document{{product=leite, quantidade=1, lifetime=1698318211530}}], count=3}}
+
+Pedido atendido com sucesso!
+o meu tempo de vida acabou café
+try regist compal de maçã
+a seguir Document{{_id=653a4779620a9e71d9f466bf, username=joao, products=[Document{{product=creme de corpo, quantidade=1, lifetime=1698318201501}}, Document{{product=arroz, quantidade=1, lifetime=1698318206515}}, Document{{product=leite, quantidade=1, lifetime=1698318211530}}, Document{{product=compal de maçã, quantidade=1, lifetime=1698318216541}}], count=4}}
+
+Pedido atendido com sucesso!
+try regist chávena de chá
+a seguir Document{{_id=653a4779620a9e71d9f466bf, username=joao, products=[Document{{product=creme de corpo, quantidade=1, lifetime=1698318201501}}, Document{{product=arroz, quantidade=1, lifetime=1698318206515}}, Document{{product=leite, quantidade=1, lifetime=1698318211530}}, Document{{product=compal de maçã, quantidade=1, lifetime=1698318216541}}, Document{{product=chávena de chá, quantidade=1, lifetime=1698318221550}}], count=5}}
+
+Pedido atendido com sucesso!
+try regist chávena de café
+a seguir nao registDocument{{_id=653a4779620a9e71d9f466bf, username=joao, products=[Document{{product=creme de corpo, quantidade=1, lifetime=1698318201501}}, Document{{product=arroz, quantidade=1, lifetime=1698318206515}}, Document{{product=leite, quantidade=1, lifetime=1698318211530}}, Document{{product=compal de maçã, quantidade=1, lifetime=1698318216541}}, Document{{product=chávena de chá, quantidade=1, lifetime=1698318221550}}], count=5}}
+
+Pedimos desculpa mas o seu pedido foi rejeitado, excedeu o número máximo de produtos por unidade de tempo.
+o meu tempo de vida acabou creme de corpo
+try regist bolachas
+a seguir nao registDocument{{_id=653a4779620a9e71d9f466bf, username=joao, products=[Document{{product=arroz, quantidade=1, lifetime=1698318206515}}, Document{{product=leite, quantidade=1, lifetime=1698318211530}}, Document{{product=compal de maçã, quantidade=1, lifetime=1698318216541}}, Document{{product=chávena de chá, quantidade=1, lifetime=1698318221550}}], count=4}}
+
+Pedimos desculpa mas o seu pedido foi rejeitado, excedeu o número máximo de produtos por unidade de tempo.
+o meu tempo de vida acabou arroz
+try regist salmão
+a seguir Document{{_id=653a4779620a9e71d9f466bf, username=joao, products=[Document{{product=leite, quantidade=1, lifetime=1698318211530}}, Document{{product=compal de maçã, quantidade=1, lifetime=1698318216541}}, Document{{product=chávena de chá, quantidade=1, lifetime=1698318221550}}, Document{{product=salmão, quantidade=1, lifetime=1698318236575}}], count=4}}
+
+Pedido atendido com sucesso!
+o meu tempo de vida acabou leite
+try regist pêras
+a seguir Document{{_id=653a4779620a9e71d9f466bf, username=joao, products=[Document{{product=compal de maçã, quantidade=1, lifetime=1698318216541}}, Document{{product=chávena de chá, quantidade=1, lifetime=1698318221550}}, Document{{product=salmão, quantidade=1, lifetime=1698318236575}}, Document{{product=pêras, quantidade=2, lifetime=1698318241586}}], count=5}}
+
+Pedido atendido com sucesso!

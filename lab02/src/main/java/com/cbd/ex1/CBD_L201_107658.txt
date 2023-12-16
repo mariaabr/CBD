@@ -9,7 +9,7 @@ comandos para iniciar o mongodb:
 
 ## O que é MongoDB?
 
-O mongodb é um banco de dados orientado a documentos projetado para facilitar o desenvolvimento e dimensionamento de aplicações.
+O mongodb é uma base de dados orientado a documentos projetado para facilitar o desenvolvimento e dimensionamento de aplicações.
 Oferece alto desempenho, alta disponibilidade e fácil escalabilidade trabalhando no conceito de coleção.
 Este pode ser executado em ambientes como mongodb Atlas, Enterprise e Community.
 O mongodb permite, assim, gerir dados, armazenar e consultá-los, transformá-los em agregações,
@@ -253,7 +253,7 @@ Para inserir um documento usa-se os métodos **insert()** ou **save()**:
     > db.users.insert({ _id : ObjectId("507f191e810c19729de860ea"), title: "Movies Overview", description: "os filmes são bons no sofá", by: "filsons", tags: ['filme', 'mantinha', 'grinch'], likes: 24 })
 
     {
-        acknowledged: true,
+        acknowledged: true,new HashMap<>();
         insertedIds: { '0': ObjectId("507f191e810c19729de860ea") }
     }
 

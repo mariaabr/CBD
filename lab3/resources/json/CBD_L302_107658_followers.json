@@ -1,0 +1,62 @@
+[
+    {
+        "video_id": 5,
+        "users_follow": ["andra", "babynois", "figas", "freixinho"]
+    },
+    {
+        "video_id": 10,
+        "users_follow": ["ddoria"]
+    },
+    {
+        "video_id": 13,
+        "users_follow": ["ddoria", "figas", "vbrunos"]
+    },
+    {
+        "video_id": 11,
+        "users_follow": ["ddoria", "figas", "guisoscas"]
+    },
+    {
+        "video_id": 1,
+        "users_follow": ["freixinho"]
+    },
+    {
+        "video_id": 8,
+        "users_follow": ["benny", "ddoria", "figas"]
+    },
+    {
+        "video_id": 2,
+        "users_follow": ["babynois", "freixinho", "vbrunos"]
+    },
+    {
+        "video_id": 4,
+        "users_follow": ["andra", "benny", "figas", "freixinho", "toni"]
+    },
+    {
+        "video_id": 15,
+        "users_follow": ["ddoria", "figas", "toni", "vbrunos"]
+    },
+    {
+        "video_id": 7,
+        "users_follow": ["luisinha"]
+    },
+    {
+        "video_id": 6,
+        "users_follow": ["babynois", "luisinha"]
+    },
+    {
+        "video_id": 9,
+        "users_follow": ["benny", "figas"]
+    },
+    {
+        "video_id": 14,
+        "users_follow": ["andra", "babynois", "ddoria", "freixinho", "luisinha"]
+    },
+    {
+        "video_id": 12,
+        "users_follow": ["babynois", "ddoria", "figas", "freixinho", "guisoscas", "luisinha", "toni"]
+    },
+    {
+        "video_id": 3,
+        "users_follow": ["andra", "guisoscas"]
+    }
+]

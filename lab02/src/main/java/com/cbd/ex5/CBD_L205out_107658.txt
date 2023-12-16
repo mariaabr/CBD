@@ -1,0 +1,139 @@
+// alinea b)
+// Criar 200000 nomes
+populatePhones(351, 1, 200000)
+
+// Verificar conteúdo
+db.phones.find()
+[
+  {
+    _id: 351210000001,
+    components: { country: 351, prefix: 21, number: 1 },
+    display: '+351-210000001'
+  },
+  {
+    _id: 351233000002,
+    components: { country: 351, prefix: 233, number: 2 },
+    display: '+351-233000002'
+  },
+  {
+    _id: 351232000003,
+    components: { country: 351, prefix: 232, number: 3 },
+    display: '+351-232000003'
+  },
+  {
+    _id: 351231000004,
+    components: { country: 351, prefix: 231, number: 4 },
+    display: '+351-231000004'
+  },
+  {
+    _id: 351231000005,
+    components: { country: 351, prefix: 231, number: 5 },
+    display: '+351-231000005'
+  },
+  {
+    _id: 351231000006,
+    components: { country: 351, prefix: 231, number: 6 },
+    display: '+351-231000006'
+  },
+  {
+    _id: 351234000007,
+    components: { country: 351, prefix: 234, number: 7 },
+    display: '+351-234000007'
+  },
+  {
+    _id: 351231000008,
+    components: { country: 351, prefix: 231, number: 8 },
+    display: '+351-231000008'
+  },
+  {
+    _id: 351220000009,
+    components: { country: 351, prefix: 22, number: 9 },
+    display: '+351-220000009'
+  },
+  {
+    _id: 351220000010,
+    components: { country: 351, prefix: 22, number: 10 },
+    display: '+351-220000010'
+  },
+  {
+    _id: 351233000011,
+    components: { country: 351, prefix: 233, number: 11 },
+    display: '+351-233000011'
+  },
+  {
+    _id: 351234000012,
+    components: { country: 351, prefix: 234, number: 12 },
+    display: '+351-234000012'
+  },
+  {
+    _id: 351233000013,
+    components: { country: 351, prefix: 233, number: 13 },
+    display: '+351-233000013'
+  },
+  {
+    _id: 351210000014,
+    components: { country: 351, prefix: 21, number: 14 },
+    display: '+351-210000014'
+  },
+  {
+    _id: 351220000015,
+    components: { country: 351, prefix: 22, number: 15 },
+    display: '+351-220000015'
+  },
+  {
+    _id: 351220000016,
+    components: { country: 351, prefix: 22, number: 16 },
+    display: '+351-220000016'
+  },
+  {
+    _id: 351232000017,
+    components: { country: 351, prefix: 232, number: 17 },
+    display: '+351-232000017'
+  },
+  {
+    _id: 351233000018,
+    components: { country: 351, prefix: 233, number: 18 },
+    display: '+351-233000018'
+  },
+  {
+    _id: 351232000019,
+    components: { country: 351, prefix: 232, number: 19 },
+    display: '+351-232000019'
+  },
+  {
+    _id: 351233000020,
+    components: { country: 351, prefix: 233, number: 20 },
+    display: '+351-233000020'
+  },
+...
+]
+
+db.phones.find().count()
+200000
+
+// alinea c)
+prefix()
+[
+  { _id: 22, numPhones: 33559 },
+  { _id: 231, numPhones: 33207 },
+  { _id: 233, numPhones: 33373 },
+  { _id: 232, numPhones: 33495 },
+  { _id: 234, numPhones: 33164 },
+  { _id: 21, numPhones: 33202 }
+]
+
+// alinea d)
+pattern() >> lista as capicuas
+[
+  '+351-231010132', '+351-233010332',
+  '+351-210020012', '+351-220020022',
+  '+351-234020432', '+351-232030232',
+  '+351-233030332', '+351-210050012',
+  '+351-232050232', '+351-233050332',
+  '+351-234060432', '+351-210090012',
+  '+351-234101432', '+351-231121132',
+  '+351-220131022', '+351-234131432',
+  '+351-231151132', '+351-234161432',
+  '+351-231171132', '+351-231191132',
+  '+351-232191232', '+351-233191332'
+]

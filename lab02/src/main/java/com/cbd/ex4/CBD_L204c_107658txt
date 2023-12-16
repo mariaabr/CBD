@@ -1,0 +1,27 @@
+Em termos de desempenho não dá para notar diferença entre uma implementação com redis e um implementação com mongodb
+uma vez que são poucos os dados. Desta forma, a análise critica dos resultados que seria feita extraindo métricas de desempenho
+não será possível de se fazer. As conclusões serão retiradas comparando as diferenças conceptuais entre estas duas implementações baseadas em Redis e em Mongodb.
+
+O mongodb é uma base de dados orientado a documentos armazenando dados em documentos 'BSON'.
+Cada documento pode ter vários campos e não tem um estrutura rígida. O mongodb foi projetado para ser
+fácil de usar e escalável suportando consultas complexas e indexação. No entanto, a nível de alta performance e baixa latência
+em aplicações de tempo real ou sistemas de cache o mongodb não é o melhor.
+
+O redis é uma base de dados em memória que suposrta várias estruturas de dados como hashes, listas, conjuntos ordenados e outros.
+Serve para gravar dados simples e rápidos como caches e é altamente escalável para a leitura em cache e operações em memória.
+Não é indicado para dados críticos que requerem uma forte consistência.
+O redis é uma boa abordagem para aplicações em tempo real e sistemas de cache, ao contrário do mongodb, devido à sua alta performance
+e baixa latência.
+
+Este exercício implementa um sistema de atendimento que permite que determinado utilizador peça um número máximo de produtos por unidade de tempo.
+Neste contexto, o redis pode ser a implementação mais adequeada.
+
+Analisando algumas operações de leitura e escrita (read/write) de ambas as soluções,
+as operações de leitura e escrita no mongodb são realizadas através dos métodos find(), insertOne(), replaceOne() e updateOne().
+Na implementação do redis, as operações são realizadas através de comandos como GET, SET, HSET, HGETALL, DEL, EXPIRE, entre outros.
+
+Assim, o redis é a melhor opção para armazenar dados em memória proporcionando um acesso muito rápido a dados.
+É eficiente para operações de read/write rápidas o que se torna apropriado para o sistema de atendimento. Pode ser usado para gerir o tempo, algo
+fundamental neste exercício uma vez que é necessário verificar o tempo de vida de cada um dos produtos.
+Uma das falhas do redis é a questão dos dados poderem ser perdidos em caso de falha e não sustentarem o armazenamento a longo prazo
+uma vez que a memória é volátil.

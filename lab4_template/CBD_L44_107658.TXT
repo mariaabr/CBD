@@ -1,0 +1,198 @@
+//1. Apresente os nomes de todos os jogadores de nacionalidade inglesa, "England", tendo em conta que Country é uma entidade.
+match (player)-[:FROM]->(country)
+where country.nationality = "England"
+return player.name as Player
+
+Player
+"J. Cole"
+"G. Neville  B"
+"P. Scholes"
+"P. Neville"
+"D. Beckham"
+"S. Campbell"
+"L. Bowyer"
+"E. Heskey"
+"K. Ellison"
+"S. Wright-Phillips"
+"M. Owen"
+"J. Carragher"
+"F. Lampard"
+"G. Barry"
+"R. Ferdinand"
+"S. Parker"
+"C. Porter"
+"A. Stansfield"
+"O. Hargreaves   B"
+"W. Brown"
+"J. Terry"
+"A. Smith"
+"S. Gerrard"
+...
+
+//2. Apresentar os jogadores do "Manchester United" ordenados de melhor para pior em termos de OVA.
+match (player)-[:PLAYS_FOR]->(club)
+where club.name  = "Manchester United"
+return player.name as Player, club.name as Club, player.ova as OVA
+order by player.ova desc
+
+Player	Club	OVA
+"Bruno Fernandes"	"Manchester United"	87
+"De Gea"	"Manchester United"	86
+"P. Pogba"	"Manchester United"	86
+"M. Rashford"	"Manchester United"	85
+"A. Martial"	"Manchester United"	84
+"E. van der Sar"	"Manchester United"	83
+"D. van de Beek"	"Manchester United"	83
+"A. Wan-Bissaka"	"Manchester United"	83
+"H. Maguire"	"Manchester United"	82
+"L. Shaw"	"Manchester United"	81
+"Fred"	"Manchester United"	81
+"P. Scholes"	"Manchester United"	80
+"S. Romero"	"Manchester United"	80
+"N. Matić"	"Manchester United"	80
+"V. Lindelöf"	"Manchester United"	80
+"D. Henderson"	"Manchester United"	80
+"M. Carrick"	"Manchester United"	79
+"Juan Mata"	"Manchester United"	79
+"C. Smalling"	"Manchester United"	79
+"E. Bailly"	"Manchester United"	79
+"S. McTominay"	"Manchester United"	79
+"R. Giggs"	"Manchester United"	78
+"O. Ighalo"	"Manchester United"	77
+"J. Lingard"	"Manchester United"	77
+"D. James"	"Manchester United"	77
+"M. Greenwood"	"Manchester United"	77
+"G. Neville  B"	"Manchester United"	76
+"Diogo Dalot"	"Manchester United"	76
+"O. Solskjær"	"Manchester United"	75
+"P. Jones"	"Manchester United"	75
+"M. Rojo"	"Manchester United"	75
+"Andreas Pereira"	"Manchester United"	75
+"B. Williams"	"Manchester United"	75
+"A. Tuanzebe"	"Manchester United"	73
+"T. Fosu-Mensah"	"Manchester United"	73
+"L. Grant"	"Manchester United"	70
+"E. Laird"	"Manchester United"	66
+"A. Barlow"	"Manchester United"	65
+"T. Mengi"	"Manchester United"	65
+"J. Bohui"	"Manchester United"	64
+"N. Bishop"	"Manchester United"	63
+"Arnau Puigmal"	"Manchester United"	63
+"E. Galbraith"	"Manchester United"	63
+"D. Bernard"	"Manchester United"	61
+"M. Helm"	"Manchester United"	59
+
+//3. Apresentar os 3 jogadores mais velhos.
+match (player:Player)
+return player.name as Player, player.age as Age
+order by Age desc
+limit 3
+
+Player	Age
+"K. Miura"	53
+"S. Royce"	47
+"L. Butrón"	43
+
+//4. Apresente todos os pares de jogadores que jogam no mesmo clube.
+match (player1)-[:PLAYS_FOR]->(club)<-[:PLAYS_FOR]-(player2)
+where id(player1) < id(player2)
+return player1.name as player1, player2.name as player2, club.name as club
+
+player1	player2	club
+"H. Sarpei"	"Raúl"	"FC Schalke 04"
+"Eliseu"	"Júlio César"	"SL Benfica"
+"S. Harper"	"E. Eboué"	"Sunderland"
+"A. Alcáraz"	"J. Cáceres"	"Olimpia Asunción"
+"M. Gilks"	"A. Baptiste"	"Bolton Wanderers"
+"G. Lux"	"J. Pinola"	"River Plate"
+"P. Gori"	"C. Maggio"	"Benevento"
+"N. Kovačević"	"R. Sartre"	"Nîmes Olympique"
+"C. Tévez"	"M. Zárate"	"Boca Juniors"
+"Mikel Rico"	"Pedro López"	"SD Huesca"
+...
+
+//5. Apresente todos os pares de jogadores que jogam no mesmo clube e cujo segundo jogador é de nacionalidade francesa, "France".
+match (player1)-[:PLAYS_FOR]->(club)<-[:PLAYS_FOR]-(player2)-[:FROM]->(country)
+where id(player1) < id(player2) and country.nationality = "France"
+return player1.name as player1, club.name as club, player2.name as player2, country.nationality as nationality_player2
+
+player1	club	player2	nationality_player2
+"N. Kovačević"	"Nîmes Olympique"	"R. Sartre"	"France"
+"J. Clément"	"AS Nancy Lorraine"	"G. Jourdren"	"France"
+"G. Higuaín"	"Inter Miami"	"B. Matuidi"	"France"
+"L. Prosser"	"Stevenage"	"R. Vincelot"	"France"
+"S. Mandanda"	"Olympique de Marseille"	"D. Payet"	"France"
+"R. Boukari"	"La Berrichonne de Châteauroux"	"A. Raineau"	"France"
+"I. Sissoko"	"BB Erzurumspor"	"G. Obertan"	"France"
+"S. Okaka"	"Udinese"	"S. De Maio"	"France"
+"Wang Dong"	"Qingdao Huanghai F.C."	"R. Alessandrini"	"France"
+"J. Holebas"	"Olympiacos CFP"	"Y. M'Vila"	"France"
+...
+
+//6. Determine a idade média da equipa do clube "Juventus".
+match (player)-[:PLAYS_FOR]->(club)
+where club.name = "Juventus"
+with club, player.age as age
+return club.name as club, round(avg(age) * 1.0, 2) as averageAge
+
+club	averageAge
+"Juventus"	26.93
+
+//7. Apresente os guarda-redes do clube "SL Benfica".
+match (player)-[:PLAYS_FOR]->(club)
+match (player)-[:PLAYS_IN]->(position)
+where club.name = "SL Benfica" and position.name = "GK"
+return player.name as player, club.name as club, position.name as position
+
+player	club	position
+"Júlio César"	"SL Benfica"	"GK"
+"Helton Leite"	"SL Benfica"	"GK"
+"M. Svilar"	"SL Benfica"	"GK"
+
+//8. Apresentar os jogadores que jogam numa posição diferente de guarda-redes e ordenados por ova de melhor para pior.
+match (player)-[:PLAYS_IN]->(position)
+where position.name <> "GK"
+return player.name as player, position.name as position, player.ova as OVA
+order by OVA desc
+
+player	position	OVA
+"L. Messi"	"RW"	93
+"Cristiano Ronaldo"	"ST"	92
+"R. Lewandowski"	"ST"	91
+"Neymar Jr"	"LW"	91
+"K. De Bruyne"	"CAM"	91
+"V. van Dijk"	"CB"	90
+"S. Mané"	"LW"	90
+"M. Salah"	"RW"	90
+"K. Mbappé"	"ST"	90
+"S. Agüero"	"ST"	89
+...
+
+//9. Apresente o jogador mais novo português e em que clube é que joga.
+match (player)-[:FROM]->(country)
+match (player)-[:PLAYS_FOR]->(club)
+where country.nationality = "Portugal"
+return player.name as player, country.nationality as nationality, player.age as age, club.name as club
+order by age
+limit 1
+
+player	nationality	age	club
+"Tiago Morais"	"Portugal"	16	"Boavista FC"
+
+//10. Apresente o top 10 de jogadores mais rápidos (sprintSpeed).
+match (player)-[:PLAYS_IN]->(position)
+return player.name as player, position.name as position, player.sprintSpeed as sprintSpeed
+order by sprintSpeed desc
+limit 10
+
+player	position	sprintSpeed
+"A. Chalá"	"LB"	96
+"Adama Traoré"	"RM"	96
+"K. Mbappé"	"ST"	96
+"A. Davies"	"LB"	96
+"A. Hakimi"	"RM"	95
+"D. James"	"RM"	95
+"L. Sané"	"LM"	95
+"Kim In Seong"	"LM"	95
+"L. Bailey"	"CAM"	95
+"K. Diatta"	"RM"	95

@@ -1,0 +1,72 @@
+[
+    {
+        "video_id": 4,
+        "username": "toni",
+        "ts": "2023-11-16 16:03:00.304000+0000",
+        "moment": 0,
+        "type": "play"
+    },
+    {
+        "video_id": 4,
+        "username": "toni",
+        "ts": "2023-11-16 16:03:00.305000+0000",
+        "moment": 250,
+        "type": "pause"
+    },
+    {
+        "video_id": 5,
+        "username": "figas",
+        "ts": "2023-11-16 16:03:00.291000+0000",
+        "moment": 0,
+        "type": "play"
+    },
+    {
+        "video_id": 5,
+        "username": "figas",
+        "ts": "2023-11-16 16:03:00.293000+0000",
+        "moment": 20,
+        "type": "pause"
+    },
+    {
+        "video_id": 5,
+        "username": "figas",
+        "ts": "2023-11-16 16:03:00.295000+0000",
+        "moment": 25,
+        "type": "play"
+    },
+    {
+        "video_id": 14,
+        "username": "guisoscas",
+        "ts": "2023-11-16 16:03:00.299000+0000",
+        "moment": 0,
+        "type": "play"
+    },
+    {
+        "video_id": 8,
+        "username": "benny",
+        "ts": "2023-11-16 16:03:00.301000+0000",
+        "moment": 0,
+        "type": "play"
+    },
+    {
+        "video_id": 8,
+        "username": "benny",
+        "ts": "2023-11-16 16:03:00.302000+0000",
+        "moment": 48,
+        "type": "stop"
+    },
+    {
+        "video_id": 11,
+        "username": "ddoria",
+        "ts": "2023-11-16 16:03:00.296000+0000",
+        "moment": 0,
+        "type": "play"
+    },
+    {
+        "video_id": 11,
+        "username": "ddoria",
+        "ts": "2023-11-16 16:03:00.298000+0000",
+        "moment": 50,
+        "type": "stop"
+    }
+]

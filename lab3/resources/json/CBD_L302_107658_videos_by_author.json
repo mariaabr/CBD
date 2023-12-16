@@ -1,0 +1,130 @@
+[
+    {
+        "author": "luisinha",
+        "ts": "2023-11-16 16:03:00.329000+0000",
+        "description": "momentos inesqueciveis do jornalismo",
+        "id": 1,
+        "tags": ["documentary", "politic"],
+        "video_name": "Entrevista ao Senhor Presidente"
+    },
+    {
+        "author": "luisinha",
+        "ts": "2023-11-16 16:03:00.331000+0000",
+        "description": "jornalismo e o melhor da flup",
+        "id": 2,
+        "tags": ["casual", "education", "life"],
+        "video_name": "A vida de um jornalista"
+    },
+    {
+        "author": "luisinha",
+        "ts": "2023-11-16 16:03:00.332000+0000",
+        "description": "o dinheiro das bolachas sera convertido em viagens",
+        "id": 3,
+        "tags": ["casual", "scouts", "vlog"],
+        "video_name": "Venda de bolachas dos escuteiros"
+    },
+    {
+        "author": "vbrunos",
+        "ts": "2023-11-16 16:03:00.337000+0000",
+        "description": "estudar durante o dia e trabalhar a noite",
+        "id": 6,
+        "tags": ["life", "qea", "university"],
+        "video_name": "Como e ser trabalhador-estudante?"
+    },
+    {
+        "author": "vbrunos",
+        "ts": "2023-11-16 16:03:00.339000+0000",
+        "description": "existe tempo para tudo, divirtam-se",
+        "id": 7,
+        "tags": ["life", "university"],
+        "video_name": "A grandiosa tuna da FDUP"
+    },
+    {
+        "author": "figas",
+        "ts": "2023-11-16 16:03:00.351000+0000",
+        "description": "servir finos, aturar bebados e trajar todo o dia",
+        "id": 14,
+        "tags": ["life", "university"],
+        "video_name": "Uma noite no tijolas"
+    },
+    {
+        "author": "andra",
+        "ts": "2023-11-16 16:03:00.353000+0000",
+        "description": "a tuna levou-me a passear",
+        "id": 15,
+        "tags": ["comedy", "university", "vlog"],
+        "video_name": "Interrail Portugal"
+    },
+    {
+        "author": "toni",
+        "ts": "2023-11-16 16:03:00.344000+0000",
+        "description": "cuidado com os rolamentos",
+        "id": 10,
+        "tags": ["casual", "sports"],
+        "video_name": "Como mudar as rodas do skate?"
+    },
+    {
+        "author": "toni",
+        "ts": "2023-11-16 16:03:00.345000+0000",
+        "description": "cartas novas e cartas para venda",
+        "id": 11,
+        "tags": ["gaming", "sports"],
+        "video_name": "Fifa23 Gameplay"
+    },
+    {
+        "author": "babynois",
+        "ts": "2023-11-16 16:03:00.349000+0000",
+        "description": "a vida de uma comissao de praxe",
+        "id": 13,
+        "tags": ["casual", "university"],
+        "video_name": "Eterna mancha amarela"
+    },
+    {
+        "author": "ddoria",
+        "ts": "2023-11-16 16:03:00.334000+0000",
+        "description": "tive de ir ao dentista no dia a seguir",
+        "id": 4,
+        "tags": ["comedy", "life", "vlog"],
+        "video_name": "O dia em que o toni me mandou com uma raquete na boca"
+    },
+    {
+        "author": "ddoria",
+        "ts": "2023-11-16 16:03:00.336000+0000",
+        "description": "nunca achei que fosse consumir tanto alcool",
+        "id": 5,
+        "tags": ["comedy", "university"],
+        "video_name": "A tuna de FEUP"
+    },
+    {
+        "author": "ddoria",
+        "ts": "2023-11-17 11:42:28.872000+0000",
+        "description": "a veneza portuguesa",
+        "id": 16,
+        "tags": ["Aveiro", "university"],
+        "video_name": "A ria"
+    },
+    {
+        "author": "benny",
+        "ts": "2023-11-16 16:03:00.347000+0000",
+        "description": "o que acontece por detras dos jogos",
+        "id": 12,
+        "tags": ["lifestyle", "sports"],
+        "video_name": "World Padel Tour Show"
+    },
+    {
+        "author": "guisoscas",
+        "ts": "2023-11-16 16:03:00.341000+0000",
+        "description": "deitar as 4h e acordar as 5h",
+        "id": 8,
+        "tags": ["casual", "scouts"],
+        "video_name": "Deitar cedo e cedo erguer"
+    },
+    {
+        "author": "freixinho",
+        "ts": "2023-11-16 16:03:00.343000+0000",
+        "description": "o mundo e as suas leis",
+        "id": 9,
+        "tags": ["mistery", "university"],
+        "video_name": "O misterio da fisica"
+    }
+]

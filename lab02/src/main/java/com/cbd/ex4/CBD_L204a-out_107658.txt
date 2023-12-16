@@ -1,0 +1,46 @@
+Dados de teste:
+
+// list order - user1
+products_user1.put("batata", 30);
+products_user1.put("café", 30);
+products_user1.put("carne picada", 30);
+products_user1.put("gel de banho", 30);
+products_user1.put("chocolate", 30);
+
+// list order - user2
+products_user2.put("bolachas", 30);
+products_user2.put("compal de maçã", 30);
+products_user2.put("salmão", 30);
+products_user2.put("creme de corpo", 30);
+products_user2.put("arroz", 30);
+products_user2.put("chávena de chá", 30);
+products_user2.put("chávena de café", 30);
+
+Output:
+
+Registo de pedidos
+------------------
+Utilizador1: filsons joao 
+Utilizador2: marta martinha 
+Utilizador 1
+Pedido atendido com sucesso!
+Pedido atendido com sucesso!
+Pedido atendido com sucesso!
+Pedido atendido com sucesso!
+Pedido atendido com sucesso!
+
+Utilizador 2
+Pedido atendido com sucesso!
+o meu tempo de vida acabou carne picada
+Pedido atendido com sucesso!
+o meu tempo de vida acabou batata
+Pedido atendido com sucesso!
+o meu tempo de vida acabou café
+Pedido atendido com sucesso!
+o meu tempo de vida acabou gel de banho
+Pedido atendido com sucesso!
+o meu tempo de vida acabou chocolate
+Pedimos desculpa mas o seu pedido foi rejeitado, excedeu o número máximo de produtos por unidade de tempo.
+o meu tempo de vida acabou creme de corpo
+Pedido atendido com sucesso!
+o meu tempo de vida acabou arroz

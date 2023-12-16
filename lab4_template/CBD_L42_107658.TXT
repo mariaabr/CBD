@@ -1,0 +1,263 @@
+// NMEC: 107658
+
+#1 Encontre todos os atores que dirigiram um filme em que também atuaram e apresente o nome do ator e o título do filme.
+match (actors)-[:DIRECTED]->(movie)<-[:ACTED_IN]-(actors) return actors.name as actor, movie.title as movie
+
+actor	movie
+"Tom Hanks"	"That Thing You Do"
+"Clint Eastwood"	"Unforgiven"
+"Danny DeVito"	"Hoffa"
+
+# 2. Para cada filme realizado depois de 2005, apresente os nomes de todos os atores que atuaram nesse filme.
+match (actores)-[:ACTED_IN]->(movie)
+where movie.released > 2005
+return actores.name as actor, movie.title as movie, movie.released as year
+
+actor	movie	year
+"Zach Grenier"	"RescueDawn"	2006
+"Steve Zahn"	"RescueDawn"	2006
+"Christian Bale"	"RescueDawn"	2006
+"Marshall Bell"	"RescueDawn"	2006
+"Tom Hanks"	"Cloud Atlas"	2012
+"Jim Broadbent"	"Cloud Atlas"	2012
+"Halle Berry"	"Cloud Atlas"	2012
+"Hugo Weaving"	"Cloud Atlas"	2012
+"Tom Hanks"	"The Da Vinci Code"	2006
+"Ian McKellen"	"The Da Vinci Code"	2006
+"Audrey Tautou"	"The Da Vinci Code"	2006
+"Paul Bettany"	"The Da Vinci Code"	2006
+"John Hurt"	"V for Vendetta"	2006
+"Stephen Rea"	"V for Vendetta"	2006
+"Natalie Portman"	"V for Vendetta"	2006
+"Hugo Weaving"	"V for Vendetta"	2006
+"Ben Miles"	"V for Vendetta"	2006
+"Emile Hirsch"	"Speed Racer"	2008
+"Rain"	"Speed Racer"	2008
+"Christina Ricci"	"Speed Racer"	2008
+"Ben Miles"	"Speed Racer"	2008
+"Susan Sarandon"	"Speed Racer"	2008
+"John Goodman"	"Speed Racer"	2008
+"Matthew Fox"	"Speed Racer"	2008
+"Rain"	"Ninja Assassin"	2009
+"Ben Miles"	"Ninja Assassin"	2009
+"Rick Yune"	"Ninja Assassin"	2009
+"Naomie Harris"	"Ninja Assassin"	2009
+"Sam Rockwell"	"Frost/Nixon"	2008
+"Michael Sheen"	"Frost/Nixon"	2008
+"Frank Langella"	"Frost/Nixon"	2008
+"Oliver Platt"	"Frost/Nixon"	2008
+"Kevin Bacon"	"Frost/Nixon"	2008
+"Julia Roberts"	"Charlie Wilson's War"	2007
+"Tom Hanks"	"Charlie Wilson's War"	2007
+"Philip Seymour Hoffman"	"Charlie Wilson's War"	2007
+
+# 3. Encontre pares de nós com mais do que uma relação entre si.
+match (n1)-[r]-(n2)
+where id(n1) < id(n2) 
+with n1, n2, count(r) as sstcount
+where sstcount>1
+return n1, n2, sstcount
+
+# 4. Encontre todos os pares de pessoas que fizeram revisões do mesmo filme. Apresente os seus nomes e título de cada filme.
+match (person1)-[:REVIEWED]->(movie)<-[:REVIEWED]-(person2)
+where id(person1) < id(person2) // avoid inverted duplications
+return person1.name as reviewer1, person2.name as reviewer2, movie.title as movie 
+
+reviewer1	reviewer2	movie
+"Angela Scope"	"Jessica Thompson"	"The Replacements"
+"Angela Scope"	"James Thompson"	"The Replacements"
+"Jessica Thompson"	"James Thompson"	"The Replacements"
+"Jessica Thompson"	"James Thompson"	"The Da Vinci Code"
+
+# 5. Encontre todos os pares de atores que atuaram em vários filmes juntos.
+match (actor1)-[:ACTED_IN]->(movie)<-[:ACTED_IN]-(actor2)
+where id(actor1) < id(actor2)
+with actor1, actor2, count(*) as total_movies
+where total_movies > 1
+return actor1.name as actor1, actor2.name as actor2, total_movies
+
+actor1	actor2	total_movies
+"Keanu Reeves"	"Carrie-Anne Moss"	3
+"Carrie-Anne Moss"	"Laurence Fishburne"	3
+"Keanu Reeves"	"Laurence Fishburne"	3
+"Laurence Fishburne"	"Hugo Weaving"	3
+"Carrie-Anne Moss"	"Hugo Weaving"	3
+"Keanu Reeves"	"Hugo Weaving"	3
+"Jack Nicholson"	"Cuba Gooding Jr."	2
+"Tom Cruise"	"Cuba Gooding Jr."	2
+"Jack Nicholson"	"J.T. Walsh"	2
+"Meg Ryan"	"Tom Hanks"	3
+"Tom Hanks"	"Rosie O'Donnell"	2
+"Ben Miles"	"Rain"	2
+"Tom Hanks"	"Gary Sinise"	2
+"Jack Nicholson"	"Danny DeVito"	2
+"Tom Hanks"	"Bill Paxton"	2
+
+# 6. Determine a idade média do elenco do filme "Apollo 13" no ano do lançamento do filme.
+match (actor)-[:ACTED_IN]->(movie)
+where movie.title = "Apollo 13"
+with movie, movie.released-actor.born as age
+return movie.title as movie, avg(age) as averageAge
+
+movie	averageAge
+"Apollo 13"	40.2
+
+# 7. Encontre os 10 filmes com o elenco mais velho no momento do lançamento do filme. Apresente o filme e a idade média arredondada a 2 casas decimais, por ordem decrescente.
+match (actor)-[:ACTED_IN]->(movie)
+with movie, movie.released-actor.born as age
+return movie.title as movie, round(avg(age) * 1.0, 2) as averageAge
+order by averageAge desc
+limit 10
+
+movie	averageAge
+"Unforgiven"	62.0
+"Cloud Atlas"	54.25
+"Something's Gotta Give"	54.0
+"The Birdcage"	50.33
+"Frost/Nixon"	49.4
+"The Polar Express"	48.0
+"What Dreams May Come"	48.0
+"V for Vendetta"	47.2
+"RescueDawn"	46.75
+"Snow Falling on Cedars"	46.5
+
+# 8. Apresente o subgrafo ACTED_IN do filme com o elenco mais novo, no momento do lançamento do filme.
+match (actor)-[:ACTED_IN]->(movie)
+with movie, avg(movie.released-actor.born) as averageAge
+order by averageAge asc
+limit 1
+match (subgraphactor)-[:ACTED_IN]->(movie)
+return movie, subgraphactor
+
+# 9. Qual é o caminho mais curto (usando qualquer tipo de relação) entre John Cusack e Demi Moore?
+match p=shortestPath((person1:Person {name:"John Cusack"})-[*]-(person2:Person {name:"Demi Moore"}))
+return p
+
+# 10. Qual a dimensão caminho mais curto (usando qualquer tipo de relação) entre Keanu Reeves e Tom Cruise?
+match p=shortestPath((person1:Person {name:"Keanu Reeves"})-[*]-(person2:Person {name:"Tom Cruise"}))
+return length(p) as pathLength
+
+pathLength
+4
+
+# 11. Quais são as dimensões do caminho mais curto entre pessoas com nome Jim e pessoas com nome Kevin?
+match p=shortestPath((person1:Person)-[*]-(person2:Person))
+where person1.name contains "Jim" and person2.name contains "Kevin"
+with person1, person2, length(p) as size
+return size
+order by size
+limit 1
+
+size
+4
+
+# 12. Que pessoas têm uma distância 2 para Jim Cash (a distância entre duas pessoas é o comprimento do caminho mais curto entre eles)?
+match p=shortestPath((person1:Person)-[*..2]-(person2:Person {name: "Jim Cash"}))
+where person1<> person2
+return person1.name as person
+
+person
+"Tom Cruise"
+"Kelly McGillis"
+"Val Kilmer"
+"Anthony Edwards"
+"Tom Skerritt"
+"Meg Ryan"
+"Tony Scott"
+
+# 13. Qual é a maior distância de uma pessoa para Kevin Bacon?
+match p=shortestPath((person1:Person)-[*]-(person2:Person {name:"Kevin Bacon"}))
+where person1 <> person2
+with person1, person2, length(p) as size
+return size
+order by size desc
+limit 1
+
+size
+6
+
+# 14. Qual é a maior distância entre duas pessoas?
+match p=shortestPath((person1:Person)-[*]-(person2:Person))
+where id(person1) < id(person2)
+with person1, person2, length(p) as size
+return size
+order by size desc
+limit 1
+
+size
+10
+
+# 15. Qual é a distribuição de distâncias em pares (isto é, para a distância 1, 2, 3, ..., quantos pares de pessoas têm essa distância um do outro)?
+match p=shortestPath((person1:Person)-[*]-(person2:Person))
+where id(person1) < id(person2)
+return length(p) as size, count(length(p)) as pairs
+order by size
+
+size	pairs
+1	3
+2	638
+3	57
+4	3124
+5	123
+6	4013
+7	11
+8	805
+10	4
+
+# 16. Indique as 10 pessoas com menor distância média em que o caminho entre elas são relações do tipo ACTED_IN.
+match p=shortestPath((person1:Person)-[:ACTED_IN*]-(person2:Person))
+where id(person1) < id(person2)
+with person1, person2, avg(length(p)) as averageDistance
+return person1.name as person1, person2.name as person2, averageDistance
+order by averageDistance
+limit 10
+
+person1	person2	averageDistance
+"Keanu Reeves"	"Brooke Langton"	2.0
+"Keanu Reeves"	"Gene Hackman"	2.0
+"Keanu Reeves"	"Laurence Fishburne"	2.0
+"Keanu Reeves"	"Carrie-Anne Moss"	2.0
+"Keanu Reeves"	"Al Pacino"	2.0
+"Keanu Reeves"	"Hugo Weaving"	2.0
+"Keanu Reeves"	"Jack Nicholson"	2.0
+"Keanu Reeves"	"Emil Eifrem"	2.0
+"Keanu Reeves"	"Charlize Theron"	2.0
+"Keanu Reeves"	"Orlando Jones"	2.0
+
+# 17. Apresente os atores que tiveram pelo menos uma role para personagens com o prefixo 'Dr.'. O resultado deve ser uma lista com o par “Ator, Lista das roles”.
+match (actor)-[r:ACTED_IN]->(movie)
+where any(role IN r.roles where role STARTS WITH 'Dr.') // alterar
+return actor.name as actor, collect(distinct r.roles) as roles
+
+Actor	Roles
+"Christopher Guest"	[["Dr. Stone"]]
+"Tom Hanks"	[["Zachry", "Dr. Henry Goose", "Isaac Sachs", "Dermot Hoggins"], ["Dr. Robert Langdon"]]
+"Helen Hunt"	[["Dr. Jo Harding"]]
+
+# 18. Apresentar o ator mais novo a participar num filme.
+match (actor)-[:ACTED_IN]->(movie)
+with actor, movie, movie.released-actor.born as age
+return actor.name as actor, age
+order by age
+limit 1
+
+actor	age
+"Jonathan Lipnicki"	4
+
+# 19. Encontrar alguém que conheça mutuamente o ator "Ed Harris" e a "Madonna".
+match (person1:Person {name:"Ed Harris"})-[:ACTED_IN]->(movie)<-[:ACTED_IN]-(coActors),
+  (coActors)-[:ACTED_IN]->(movie2)<-[:ACTED_IN]-(person2:Person {name:"Madonna"})
+return coActors.name as person
+
+person
+"Tom Hanks"
+"Bill Paxton"
+
+# 20. Apresnetar o nome e o ano de nascimento de toda a gente chamada "James" nascido antes de 1960.
+match (person:Person)
+where person.name contains "James" and person.born < 1960
+return distinct person.name as person, person.born as birth
+
+person	birth
+"James L. Brooks"	1940
+"James Cromwell"	1940
